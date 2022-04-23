@@ -7,6 +7,8 @@ public class PickUp : MonoBehaviour
 
     public GameObject helper;
 
+    public float waitTime = 20f;
+
 
 
 
@@ -14,7 +16,7 @@ public class PickUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        SetNewPosition();
     }
 
     // Update is called once per frame
@@ -26,10 +28,45 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        GetHelp();
-        
-        Destroy(gameObject);
+        PowerUp();
+
+        gameObject.SetActive(false);
+
+        Invoke("SetNewPosition", waitTime);
     }
+
+    void PowerUp()
+    {
+        switch(Random.Range(0, 5))
+        {
+            case 0:
+                ScaleUp();
+                break;
+            case 1:
+                ScaleDown();
+                break;
+            case 2:
+                SpeedUp();
+                break;
+            case 3:
+                SlowDown();
+                break;
+            case 4:
+                GetHelp();
+                break;
+        }
+    }
+
+
+    void SetNewPosition()
+    {
+        Vector3 newPos = new Vector3(Random.Range(-2, 10), transform.position.y, Random.Range(-13, 0));
+        gameObject.transform.position = newPos;
+        gameObject.SetActive(true);
+    }
+    
+
+
 
     void ScaleUp()
     {
@@ -59,4 +96,5 @@ public class PickUp : MonoBehaviour
     {
         helper.SetActive(true);
     }
+
 }

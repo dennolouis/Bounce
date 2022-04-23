@@ -23,4 +23,12 @@ public class Ball : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag == "SafeZone")
+        {
+            Time.timeScale = 0;
+        }
+    }
 }
