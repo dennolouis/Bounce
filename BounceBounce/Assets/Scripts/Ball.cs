@@ -17,8 +17,6 @@ public class Ball : MonoBehaviour
 
 
     public TextMeshProUGUI goldTMP;
-
-
     public GameObject floatingTextPrefab;
 
     // Start is called before the first frame update
@@ -27,12 +25,6 @@ public class Ball : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.AddTorque(new Vector3(0, 1, 0) * spin);
         rb.AddForce(new Vector3(0, 0, -1) * force);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
 
@@ -76,7 +68,7 @@ public class Ball : MonoBehaviour
         goldTMP.text = "Gold: " + gold.ToString();
     }
 
-    void ShowText(string text, Color color)
+    public void ShowText(string text, Color color)
     {
         if (floatingTextPrefab)
         {

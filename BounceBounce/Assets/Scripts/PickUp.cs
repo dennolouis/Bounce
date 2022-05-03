@@ -10,7 +10,8 @@ public class PickUp : MonoBehaviour
     public float waitTime = 20f;
 
 
-
+    string powerUpText = "";
+    Color color;
 
      
     // Start is called before the first frame update
@@ -29,6 +30,13 @@ public class PickUp : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         PowerUp();
+
+        Ball ball = other.gameObject.GetComponent<Ball>();
+
+        if (ball)
+        {
+            ball.ShowText(powerUpText, color);
+        }
 
         gameObject.SetActive(false);
 
@@ -73,6 +81,9 @@ public class PickUp : MonoBehaviour
         GameObject player = FindObjectOfType<Player>().gameObject;//.transform.localScale.x *= 1.5;
         Vector3 newScale = new Vector3(player.transform.localScale.x * 2f, player.transform.localScale.y, player.transform.localScale.z);
         player.transform.localScale = newScale;
+
+        powerUpText = "Scale Up";
+        color = new Color(0, 255, 62);
     }
 
     void ScaleDown()
@@ -80,21 +91,33 @@ public class PickUp : MonoBehaviour
         GameObject player = FindObjectOfType<Player>().gameObject;//.transform.localScale.x *= 1.5;
         Vector3 newScale = new Vector3(player.transform.localScale.x * 0.5f, player.transform.localScale.y, player.transform.localScale.z);
         player.transform.localScale = newScale;
+
+        powerUpText = "Shrink";
+        color = new Color(24, 166, 157);
     }
 
     void SpeedUp()
     {
         FindObjectOfType<Pivot>().speed += 100;
+
+        powerUpText = "Speed Up";
+        color = new Color(255, 0, 244);
     }
 
     void SlowDown()
     {
         FindObjectOfType<Pivot>().speed -= 50;
+
+        powerUpText = "Slow Down";
+        color = new Color(24, 166, 228);
     }
 
     void GetHelp()
     {
         helper.SetActive(true);
+
+        powerUpText = "Clone";
+        color = new Color(233, 239, 0);
     }
 
 }
