@@ -8,6 +8,8 @@ TagManager:
   - SafeZone
   - SpikeTurn
   - Center
+  - GoldTMP
+  - Gold
   layers:
   - Default
   - TransparentFX

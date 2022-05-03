@@ -12,11 +12,11 @@ public class PickUp : MonoBehaviour
 
 
 
-
+     
     // Start is called before the first frame update
     void Start()
     {
-        SetNewPosition();
+        Invoke("SetNewPosition", waitTime);
     }
 
     // Update is called once per frame
