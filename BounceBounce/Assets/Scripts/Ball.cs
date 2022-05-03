@@ -56,7 +56,8 @@ public class Ball : MonoBehaviour
     {
         if(other.gameObject.tag == "SafeZone")
         {
-            Time.timeScale = 0;
+            FindObjectOfType<GameOver>().CalculateTotal(gold);
+            Destroy(gameObject);
         }
     }
 
@@ -65,7 +66,7 @@ public class Ball : MonoBehaviour
     {
         gold += amount;
         gold = gold < 0 ? 0 : gold; //check if gold is less than zero
-        goldTMP.text = "Gold: " + gold.ToString();
+        goldTMP.text = /*"Gold: " +*/ gold.ToString();
     }
 
     public void ShowText(string text, Color color)
