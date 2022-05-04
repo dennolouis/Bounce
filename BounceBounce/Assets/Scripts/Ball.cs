@@ -13,18 +13,24 @@ public class Ball : MonoBehaviour
     Rigidbody rb;
 
 
-    int gold = 0;
+    static int gold = 0;
 
 
     public TextMeshProUGUI goldTMP;
     public GameObject floatingTextPrefab;
 
+    Player player;
+
     // Start is called before the first frame update
     void Start()
     {
+        goldTMP = GameObject.FindGameObjectWithTag("GoldTMP").GetComponent<TextMeshProUGUI>();
+
         rb = GetComponent<Rigidbody>();
         rb.AddTorque(new Vector3(0, 1, 0) * spin);
-        rb.AddForce(new Vector3(0, 0, -1) * force);
+        rb.AddForce(new Vector3(0, 0, 1) * force);
+
+        player = FindObjectOfType<Player>();
     }
 
 
@@ -56,8 +62,20 @@ public class Ball : MonoBehaviour
     {
         if(other.gameObject.tag == "SafeZone")
         {
-            FindObjectOfType<GameOver>().CalculateTotal(gold);
-            Destroy(gameObject);
+            player.UpdateLives(-1);
+
+            if(player.lives <= 0)
+            {
+                FindObjectOfType<GameOver>().CalculateTotal(gold);
+                Destroy(gameObject);
+                return;
+            }
+
+            FindObjectOfType<BallSpawn>().Spawn();
+
+            
+            
+            Destroy(gameObject, 1f);
         }
     }
 
@@ -80,5 +98,9 @@ public class Ball : MonoBehaviour
         }
     }
 
+    public void ResetGold()
+    {
+        gold = 0;
+    }
 
 }
