@@ -12,6 +12,9 @@ public class GameOver : MonoBehaviour
     public TextMeshProUGUI currentTMP, earnedTMP, totalTmp;
     int current = 600;
     int earnedCopy, earnedcopy1;
+
+
+    public GameObject[] hide;
    
     private void Awake()
     {
@@ -22,6 +25,8 @@ public class GameOver : MonoBehaviour
 
     public void CalculateTotal(int earned)
     {
+        Hide();
+
         screen.SetActive(true);
 
         earnedCopy = earned;
@@ -42,6 +47,14 @@ public class GameOver : MonoBehaviour
         totalTmp.text = current.ToString();
 
         Invoke("CalcTotalHelper", delay);
+    }
+
+    public void Hide()
+    {
+        foreach(GameObject obj in hide)
+        {
+            obj.SetActive(false);
+        }
     }
 
 }
