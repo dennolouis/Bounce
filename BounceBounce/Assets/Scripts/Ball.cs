@@ -49,12 +49,18 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Gold")
+        switch (other.gameObject.tag)
         {
-            AddGold(5);
-            ShowText("+5", new Color(255, 255, 255));
-            Destroy(other.gameObject);
-
+            case "Gold":
+                AddGold(5);
+                ShowText("+5", new Color(255, 255, 255));
+                Destroy(other.gameObject);
+                break;
+            case "Heart":
+                player.UpdateLives(1);
+                ShowText("+1", new Color(255, 255, 255));
+                Destroy(other.gameObject);
+                break;
         }
     }
 

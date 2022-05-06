@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoldSpawn : MonoBehaviour
+public class PickUpSpawn : MonoBehaviour
 {
 
 
 
-    public GameObject gold;
+    public GameObject pickUp;
     public int startAmount = 2;
 
     public float minWaitTime = 10, maxWaitTime = 60;
@@ -25,7 +25,7 @@ public class GoldSpawn : MonoBehaviour
     void SpawnGold()
     {
         Vector3 newPos = new Vector3(Random.Range(-2, 10), transform.position.y, Random.Range(-13, 0));
-        Instantiate(gold, newPos, Quaternion.Euler(-75, 180, 0));
+        Instantiate(pickUp, newPos, Quaternion.Euler(-75, 180, 0));
     }
 
     void GoldSpawnLoop()
