@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4955237845880587087}
   - component: {fileID: 5982221973323012056}
   - component: {fileID: 5982221973323012063}
+  - component: {fileID: 8858116973517576846}
   m_Layer: 0
   m_Name: Heart
   m_TagString: Heart
@@ -110,7 +111,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6fb2359b5dd50d4992a886f518435d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 60
   x: 0
   y: 1
   z: 0
+--- !u!114 &8858116973517576846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6900771238514746010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a62c40628e3cc44a934c5baf262e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
