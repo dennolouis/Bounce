@@ -13,10 +13,13 @@ public class PickUp : MonoBehaviour
     string powerUpText = "";
     Color color;
 
+    SoundHandler soundHandler;
+
      
     // Start is called before the first frame update
     void Start()
     {
+        soundHandler = FindObjectOfType<SoundHandler>();
         Invoke("SetNewPosition", waitTime);
     }
 
@@ -82,7 +85,7 @@ public class PickUp : MonoBehaviour
         Vector3 newScale = new Vector3(player.transform.localScale.x * 2f, player.transform.localScale.y, player.transform.localScale.z);
         player.transform.localScale = newScale;
 
-        powerUpText = "Scale Up";
+        powerUpText = "Big";
         color = new Color(0, 255, 62);
     }
 
@@ -92,7 +95,7 @@ public class PickUp : MonoBehaviour
         Vector3 newScale = new Vector3(player.transform.localScale.x * 0.5f, player.transform.localScale.y, player.transform.localScale.z);
         player.transform.localScale = newScale;
 
-        powerUpText = "Shrink";
+        powerUpText = "Shink";
         color = new Color(24, 166, 157);
     }
 
@@ -100,7 +103,7 @@ public class PickUp : MonoBehaviour
     {
         FindObjectOfType<Pivot>().speed += 100;
 
-        powerUpText = "Speed Up";
+        powerUpText = "Fast";
         color = new Color(255, 0, 244);
     }
 
@@ -108,12 +111,13 @@ public class PickUp : MonoBehaviour
     {
         FindObjectOfType<Pivot>().speed -= 50;
 
-        powerUpText = "Slow Down";
+        powerUpText = "Slow";
         color = new Color(24, 166, 228);
     }
 
     void GetHelp()
     {
+        soundHandler.clonePowerUp.Play();
         helper.SetActive(true);
 
         powerUpText = "Clone";

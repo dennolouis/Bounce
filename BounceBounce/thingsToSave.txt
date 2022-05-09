@@ -1,0 +1,4 @@
+amount of gold 
+volume state
+unlocked balls
+unlocked levels

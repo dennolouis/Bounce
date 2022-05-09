@@ -20,6 +20,7 @@ public class Ball : MonoBehaviour
     public GameObject floatingTextPrefab;
 
     Player player;
+    SoundHandler soundHandler;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class Ball : MonoBehaviour
         rb.AddForce(new Vector3(0, 0, 1) * force);
 
         player = FindObjectOfType<Player>();
+        soundHandler = FindObjectOfType<SoundHandler>();
     }
 
 
@@ -39,11 +41,13 @@ public class Ball : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             AddGold(1);
+            soundHandler.PlayerBallHit.Play();
         }
         if (collision.gameObject.tag == "enemy")
         {
             ShowText("-10", new Color(255, 0, 0));
             AddGold(-10);
+            soundHandler.hit.Play();
         }
     }
 
@@ -54,11 +58,13 @@ public class Ball : MonoBehaviour
             case "Gold":
                 AddGold(5);
                 ShowText("+5", new Color(255, 255, 255));
+                soundHandler.goldSound.Play();
                 Destroy(other.gameObject);
                 break;
             case "Heart":
                 player.UpdateLives(1);
                 ShowText("+1", new Color(255, 255, 255));
+                soundHandler.heartSound.Play();
                 Destroy(other.gameObject);
                 break;
         }

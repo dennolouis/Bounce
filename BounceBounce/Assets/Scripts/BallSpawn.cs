@@ -22,5 +22,6 @@ public class BallSpawn : MonoBehaviour
     void NewBall()
     {
         Instantiate(balls[ballToSpawn], transform.position, Quaternion.identity);
+        FindObjectOfType<SoundHandler>().ballSpawn.Play();
     }
 }
