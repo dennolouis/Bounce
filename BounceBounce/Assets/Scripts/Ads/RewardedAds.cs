@@ -52,6 +52,8 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     // Implement a method to execute when the user clicks the button:
     public void ShowAd()
     {
+        AudioListener.pause = true;
+        Time.timeScale = 0;
         // Disable the button:
         _showAdButton.interactable = false;
         // Then show the ad:
@@ -66,6 +68,7 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
             Debug.Log("Unity Ads Rewarded Ad Completed");
             // Grant a reward.
             Time.timeScale = 1;
+            AudioListener.pause = false;
             FindObjectOfType<GameOver>().DoubleGold();
 
             // Load another ad:
@@ -83,6 +86,7 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
         Debug.Log($"Error loading Ad Unit {adUnitId}: {error.ToString()} - {message}");
         // Use the error details to determine whether to try to load another ad.
         Time.timeScale = 1;
+        AudioListener.pause = false;
     }
 
     public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
@@ -90,6 +94,7 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
         Debug.Log($"Error showing Ad Unit {adUnitId}: {error.ToString()} - {message}");
         // Use the error details to determine whether to try to load another ad.
         Time.timeScale = 1;
+        AudioListener.pause = false;
     }
 
     public void OnUnityAdsShowStart(string adUnitId) { }

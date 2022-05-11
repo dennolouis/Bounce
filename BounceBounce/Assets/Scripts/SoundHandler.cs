@@ -12,8 +12,12 @@ public class SoundHandler : MonoBehaviour
     public AudioSource ballSpawn;
     public AudioSource hit;
 
-    public AudioSource clonePowerUp;
+    public AudioSource lostLife;
 
+    public AudioSource clonePowerUp;
+    public AudioSource pop;
+    public AudioSource speedUp;
+    public AudioSource slowDown;
 
     // Start is called before the first frame update
     void Start()

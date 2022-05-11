@@ -91,6 +91,7 @@ public class PickUp : MonoBehaviour
 
     void ScaleDown()
     {
+        soundHandler.pop.Play();
         GameObject player = FindObjectOfType<Player>().gameObject;//.transform.localScale.x *= 1.5;
         Vector3 newScale = new Vector3(player.transform.localScale.x * 0.5f, player.transform.localScale.y, player.transform.localScale.z);
         player.transform.localScale = newScale;
@@ -101,6 +102,7 @@ public class PickUp : MonoBehaviour
 
     void SpeedUp()
     {
+        soundHandler.speedUp.Play();
         FindObjectOfType<Pivot>().speed += 100;
 
         powerUpText = "Fast";
@@ -109,6 +111,7 @@ public class PickUp : MonoBehaviour
 
     void SlowDown()
     {
+        soundHandler.slowDown.Play();
         FindObjectOfType<Pivot>().speed -= 50;
 
         powerUpText = "Slow";

@@ -37,7 +37,7 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
         {
             AudioListener.pause = true;
             Time.timeScale = 0;
-            ShowAd();
+            this.ShowAd();
         }
     }
 
@@ -52,6 +52,7 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
     // Show the loaded content in the Ad Unit:
     public void ShowAd()
     {
+        FindObjectOfType<BannerAd>().HideBannerAd();
         // Note that if the ad content wasn't previously loaded, this method will fail
         Debug.Log("Showing Ad: " + _adUnitId);
         Advertisement.Show(_adUnitId, this);

@@ -74,6 +74,7 @@ public class Ball : MonoBehaviour
     {
         if(other.gameObject.tag == "SafeZone")
         {
+            soundHandler.lostLife.Play();
             player.UpdateLives(-1);
 
             if(player.lives <= 0)
