@@ -37,6 +37,8 @@ public class GameOver : MonoBehaviour
 
     public void CalculateTotal(int earned)
     {
+        FindObjectOfType<InterstitialAd>().MaybeShowAd();
+        
         Hide();
 
         screen.SetActive(true);
